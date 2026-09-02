@@ -129,6 +129,26 @@
     }
 
 
+
+    /* ===== 3D AI BACKGROUND ===== */
+    #p5-container {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: .64;
+      mix-blend-mode: screen;
+    }
+    [data-theme="light"] #p5-container {
+      opacity: .34;
+      mix-blend-mode: multiply;
+    }
+    nav, .control-panel, section, footer { position: relative; z-index: 2; }
+    .hero-bg { z-index: 1; }
+    @media (max-width: 640px) { #p5-container { opacity: .35; } }
+    @media (prefers-reduced-motion: reduce) { #p5-container { opacity: .22; } }
+
+
     html {
       scroll-behavior: smooth;
       -webkit-font-smoothing: antialiased;
@@ -1036,8 +1056,10 @@
       51%, 100% { opacity: 0; }
     }
   </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/p5.min.js"></script>
 </head>
 <body>
+  <div id="p5-container" aria-hidden="true"></div>
 
   <!-- NAVIGATION -->
   <nav id="nav">
@@ -1585,6 +1607,6 @@
     };
     window.addEventListener('scroll', updateActive, { passive: true });
   </script>
-
+  <script src="assets/js/sketch.js"></script>
 </body>
 </html>
